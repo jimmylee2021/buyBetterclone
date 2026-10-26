@@ -1312,6 +1312,9 @@ body{
     padding-right: 16px;
     padding-left: 16px;
   }
+  .product-grid {
+    grid-template-columns:  minmax(0, 1fr);
+  }
   .cart-item {
     grid-template-columns: 76px minmax(0, 1fr);
     gap: 12px;
@@ -1466,7 +1469,7 @@ body{
 
 @media (max-width: 768px) {
   .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 16px;
   }
 
