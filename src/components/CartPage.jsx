@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Minus, Plus } from 'lucide-react'
 import { useCart } from '../context/CartContext.jsx'
 
 const formatPrice = (price) => `₦${price.toLocaleString('en-NG')}`
@@ -25,19 +26,33 @@ export const CartPage = () => {
                     <h2>{item.name}</h2>
                     <p>{formatPrice(item.price)}</p>
                     <div className="cart-item-controls">
-                      <label htmlFor={`quantity-${item.id}`}>Quantity</label>
-                      <input
-                        id={`quantity-${item.id}`}
-                        type="number"
-                        min="0"
-                        value={item.quantity}
-                        onChange={(event) => {
-                          const quantity = Number(event.target.value)
-                          if (Number.isInteger(quantity) && quantity >= 0) {
-                            updateQuantity(item.id, quantity)
-                          }
-                        }}
-                      />
+                      <span className="cart-quantity-label">Quantity</span>
+                      <div
+                        className="cart-quantity-stepper"
+                        role="group"
+                        aria-label={`Quantity: ${item.quantity}`}
+                      >
+                        <button
+                          className="cart-quantity-button"
+                          type="button"
+                          aria-label={`Decrease quantity of ${item.name}`}
+                          disabled={item.quantity <= 1}
+                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        >
+                          <Minus aria-hidden="true" />
+                        </button>
+                        <span className="cart-quantity-value" aria-live="polite">
+                          {item.quantity}
+                        </span>
+                        <button
+                          className="cart-quantity-button"
+                          type="button"
+                          aria-label={`Increase quantity of ${item.name}`}
+                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        >
+                          <Plus aria-hidden="true" />
+                        </button>
+                      </div>
                       <button type="button" onClick={() => removeItem(item.id)}>
                         Remove
                       </button>
