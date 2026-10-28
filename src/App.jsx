@@ -5,6 +5,7 @@ import { About } from './components/About.jsx'
 import { Footer } from './components/Footer.jsx'
 import { CartPage } from './components/CartPage.jsx'
 import { WishlistPage } from './components/WishlistPage.jsx'
+import { ProductsPage } from './components/ProductsPage.jsx'
 function App() {
   return (
     <>
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/products" element={<ProductsPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
       </Routes>

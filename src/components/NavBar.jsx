@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Heart, Menu, ShoppingBag, UserRound, X } from 'lucide-react'
+import { Heart, Menu, ShoppingBag, X } from 'lucide-react'
 import { useCart } from '../context/CartContext.jsx'
 import { useWishlist } from '../context/WishlistContext.jsx'
 
@@ -45,7 +45,6 @@ export const NavBar = () => {
             <Heart aria-hidden="true" />
             {wishlistItems.length > 0 && <span className="wishlist-count">{wishlistItems.length}</span>}
           </NavLink>
-          <NavLink to="/cart" aria-label="Account"><UserRound aria-hidden="true" /></NavLink>
         </div>
       </div>
     </header>
