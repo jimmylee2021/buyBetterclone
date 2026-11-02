@@ -23,20 +23,22 @@ const promises = [
 export const About = () => (
   <main className="about-page">
     <section className="about-hero">
-      <div className="about-hero-content">
-        <p className="about-eyebrow">WELCOME TO BUYBETTER</p>
-        <h1>Better beauty buying, made for you.</h1>
-        <p className="about-hero-description">
-          Your go-to place for beauty and skincare favorites, whether you’re shopping for
-          your routine or stocking up for your business.
-        </p>
-        <Link className="about-primary-link" to="/products">
-          Explore products <ArrowRight aria-hidden="true" size={18} />
-        </Link>
-      </div>
-      <div className="about-hero-image">
-        <img src={Group} alt="A selection of skincare and beauty products" />
-        <span className="about-image-note">A little better in every basket.</span>
+      <div className="about-hero-inner">
+        <div className="about-hero-content">
+          <p className="about-eyebrow">WELCOME TO BUYBETTER</p>
+          <h1>Better beauty buying, made for you.</h1>
+          <p className="about-hero-description">
+            Your go-to place for beauty and skincare favorites, whether you’re shopping for
+            your routine or stocking up for your business.
+          </p>
+          <Link className="about-primary-link" to="/products">
+            Explore products <ArrowRight aria-hidden="true" size={18} />
+          </Link>
+        </div>
+        <div className="about-hero-image">
+          <img src={Group} alt="A selection of skincare and beauty products" />
+          <span className="about-image-note">A little better in every basket.</span>
+        </div>
       </div>
     </section>
 
@@ -70,22 +72,24 @@ export const About = () => (
     </section>
 
     <section className="about-visit">
-      <div>
-        <p className="about-eyebrow">LET’S FIND YOUR NEXT FAVORITE</p>
-        <h2>Beauty shopping that works for your business and your routine.</h2>
-      </div>
-      <div className="about-visit-actions">
-        <Link className="about-primary-link" to="/products">
-          Shop all products <ArrowRight aria-hidden="true" size={18} />
-        </Link>
-        <a
-          className="about-contact-link"
-          href="https://wa.me/2347042995900"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Chat with a skin advisor
-        </a>
+      <div className="about-visit-content">
+        <div>
+          <p className="about-eyebrow">LET’S FIND YOUR NEXT FAVORITE</p>
+          <h2>Beauty shopping that works for your business and your routine.</h2>
+        </div>
+        <div className="about-visit-actions">
+          <Link className="about-primary-link" to="/products">
+            Shop all products <ArrowRight aria-hidden="true" size={18} />
+          </Link>
+          <a
+            className="about-contact-link"
+            href="https://wa.me/2347042995900"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Chat with a skin advisor
+          </a>
+        </div>
       </div>
     </section>
   </main>

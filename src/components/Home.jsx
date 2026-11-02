@@ -85,7 +85,7 @@ export const Home = () => {
         </button>
       </div>
     </div>
-    <section>
+    <section className="service-highlights">
          <div className="section-row">
              <div className="content-bx">
                <UserShield />
