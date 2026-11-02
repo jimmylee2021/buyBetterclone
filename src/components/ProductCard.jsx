@@ -1,16 +1,19 @@
 import { Heart } from 'lucide-react'
-import { useCart } from '../context/CartContext.jsx'
+import { Link } from 'react-router-dom'
 import { useWishlist } from '../context/WishlistContext.jsx'
+import { AddToCartButton } from './AddToCartButton.jsx'
 
 export const ProductCard = ({ product }) => {
-  const { addItem } = useCart()
   const { toggleItem, hasItem } = useWishlist()
   const isSaved = hasItem(product.id)
+  const detailsPath = `/products/${product.id}`
 
   return (
     <article className="product-card">
       <div className="product-card-image-wrap">
-        <img src={product.image} alt={product.name} />
+        <Link to={detailsPath} aria-label={`View details for ${product.name}`}>
+          <img src={product.image} alt={product.name} />
+        </Link>
         <button
           type="button"
           className={`product-wishlist-button${isSaved ? ' is-saved' : ''}`}
@@ -22,11 +25,11 @@ export const ProductCard = ({ product }) => {
         </button>
       </div>
 
-      <h3>{product.name}</h3>
+      <h3><Link to={detailsPath}>{product.name}</Link></h3>
       <p>₦{product.price.toLocaleString('en-NG')}</p>
       <div className="product-card-buttons">
-        <button className="product-card-btn" onClick={() => addItem(product)}>Add to Cart</button>
-        <button className="product-card-btn buy-now">Buy Now</button>
+        <AddToCartButton product={product} className="product-card-btn" />
+        <Link className="product-card-btn buy-now" to={detailsPath}>View Details</Link>
       </div>
     </article>
   )

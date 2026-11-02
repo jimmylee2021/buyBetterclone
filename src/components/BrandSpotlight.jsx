@@ -1,7 +1,8 @@
 import { useRef } from 'react'
 import { ChevronLeft, ChevronRight, Heart } from 'lucide-react'
-import { useCart } from '../context/CartContext.jsx'
+import { Link } from 'react-router-dom'
 import { useWishlist } from '../context/WishlistContext.jsx'
+import { AddToCartButton } from './AddToCartButton.jsx'
 import vitaminSerum from '../assets/vitamin.png'
 import eyeCream from '../assets/eye.png'
 
@@ -12,6 +13,7 @@ const products = [
     detail: 'Pure Vitamin C10, 30ml',
     price: 28500,
     image: vitaminSerum,
+    detailsProductId: 4,
   },
 
   {
@@ -20,12 +22,12 @@ const products = [
     detail: 'Dark Circle Eye Cream, 15ml',
     price: 22000,
     image: eyeCream,
+    detailsProductId: 2,
   },
 ]
 
 export const BrandSpotlight = () => {
   const carouselRef = useRef(null)
-  const { addItem } = useCart()
   const { toggleItem, hasItem } = useWishlist()
 
   const scrollCarousel = (direction) => {
@@ -85,14 +87,13 @@ export const BrandSpotlight = () => {
                     ₦{product.price.toLocaleString('en-NG')}
                   </p>
                   <div className="brand-product-actions">
-                    <button
-                      type="button"
-                      className="brand-add-to-cart"
-                      onClick={() => addItem(product)}
+                    <AddToCartButton product={product} className="brand-add-to-cart" />
+                    <Link
+                      className="brand-buy-now"
+                      to={`/products/${product.detailsProductId}`}
                     >
-                      Add to Cart
-                    </button>
-                    <button type="button" className="brand-buy-now">Buy Now</button>
+                      View Details
+                    </Link>
                   </div>
                 </div>
               </article>

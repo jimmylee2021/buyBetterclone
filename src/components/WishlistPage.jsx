@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom'
-import { Heart, ShoppingBag, X } from 'lucide-react'
-import { useCart } from '../context/CartContext.jsx'
+import { Heart, X } from 'lucide-react'
 import { useWishlist } from '../context/WishlistContext.jsx'
+import { AddToCartButton } from './AddToCartButton.jsx'
 
 const formatPrice = (price) => `₦${price.toLocaleString('en-NG')}`
 
 export const WishlistPage = () => {
   const { items, removeItem } = useWishlist()
-  const { addItem } = useCart()
 
   return (
     <main className="wishlist-page">
@@ -40,14 +39,7 @@ export const WishlistPage = () => {
                   <h2>{product.name}</h2>
                   {product.detail && <p>{product.detail}</p>}
                   <strong>{formatPrice(product.price)}</strong>
-                  <button
-                    type="button"
-                    className="wishlist-add-cart"
-                    onClick={() => addItem(product)}
-                  >
-                    <ShoppingBag aria-hidden="true" />
-                    Add to Cart
-                  </button>
+                  <AddToCartButton product={product} className="wishlist-add-cart" showIcon />
                 </div>
               </article>
             ))}
